@@ -615,7 +615,7 @@ StopReason Driver::runInternal(
             });
             pushdownFilters(i);
             if (intermediateResult) {
-              withDeltaCpuWallTimer(op, &OperatorStats::addInputTiming, [&]() {
+              withDeltaCpuWallTimer(nextOp, &OperatorStats::addInputTiming, [&]() {
                 {
                   auto lockedStats = nextOp->stats().wlock();
                   lockedStats->addInputVector(
